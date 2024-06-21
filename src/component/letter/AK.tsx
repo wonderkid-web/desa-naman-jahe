@@ -1,8 +1,8 @@
-// @ts-nocheck
-// File: SKTM.js
+// File: DeathCertificatePDF.js
+
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
-import Header from './Header';
+import Header from './Header'; // Pastikan Anda memiliki Header.js sesuai dengan komponen PDF lainnya
 
 const styles = StyleSheet.create({
     page: {
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         textDecoration: 'underline',
         fontWeight: 'bold',
     },
-    letterNumber:{
+    letterNumber: {
         fontSize: 16,
         marginBottom: 20,
         textAlign: 'center',
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     },
     value: {
         width: '70%',
-        fontWeight:"ultrabold"
+        fontWeight: "ultrabold"
     },
     signature: {
         marginTop: 50,
@@ -51,14 +51,14 @@ const styles = StyleSheet.create({
     },
 });
 
-const SKTM = ({ name, dob, address, nik, gender, status, occupation, religion, skDate, applicantName, applicantDob, schoolName, issuer, date }) => (
+const AK = ({ name, nik, dob, gender, status, occupation, religion, address, skDate, applicantName, applicantDob, schoolName, issuer, date }:any) => (
     <Document>
         <Page style={styles.page}>
             <Header />
-            <Text style={styles.title}>SURAT KETERANGAN TIDAK MAMPU</Text>
-            <Text style={styles.letterNumber}>Nomor: 468/SKTM/IX/2020</Text>
+            <Text style={styles.title}>KUTIPAN AKTA KEMATIAN</Text>
+            <Text style={styles.letterNumber}>Nomor: 1234/AK/VI/2023</Text>
             <Text style={styles.content}>
-                Lurah Mawar Mekar Kecamatan Ujung Atas dengan ini menerangkan bahwa:
+                Berdasarkan Surat Kematian Nomor: {nik}, dengan ini kami menerangkan bahwa:
             </Text>
             <View style={styles.section}>
                 <View style={styles.row}>
@@ -95,41 +95,38 @@ const SKTM = ({ name, dob, address, nik, gender, status, occupation, religion, s
                 </View>
             </View>
             <Text style={styles.content}>
-                Berdasarkan surat pengantar dari RT 008 RW 002 No. 032/RT.008/RW.002/IX/2019 Tanggal {skDate}, bahwa benar yang bersangkutan keluarga tidak mampu.
+                Telah meninggal dunia pada tanggal {skDate}. Berdasarkan pengantar dari RT/RW setempat, bahwa benar yang bersangkutan meninggal dunia.
             </Text>
             <Text style={styles.content}>
-                Surat keterangan ini untuk persyaratan Bantuan Pendidikan Sekolah atas nama:
+                Data keluarga yang bersangkutan adalah sebagai berikut:
             </Text>
             <View style={styles.section}>
                 <View style={styles.row}>
-                    <Text style={styles.label}>Nama</Text>
+                    <Text style={styles.label}>Nama Anak</Text>
                     <Text style={styles.value}>: {applicantName}</Text>
                 </View>
                 <View style={styles.row}>
-                    <Text style={styles.label}>Tempat/Tanggal Lahir</Text>
+                    <Text style={styles.label}>Tempat/Tanggal Lahir Anak</Text>
                     <Text style={styles.value}>: {applicantDob}</Text>
                 </View>
                 <View style={styles.row}>
-                    <Text style={styles.label}>Sekolah</Text>
+                    <Text style={styles.label}>Sekolah Anak</Text>
                     <Text style={styles.value}>: {schoolName}</Text>
                 </View>
             </View>
             <Text style={styles.content}>
-                Surat Keterangan dinyatakan tidak berlaku apabila terjadi pelanggaran, peraturan Perundang-undangan dan Perda Kota Medan serta apabila terdapat kekeliruan dalam penulisan surat keterangan ini menjadi tanggung jawab pemohon/pemegang bersedia mempertanggungjawabkan secara hukum tanpa melibatkan pihak manapun.
-            </Text>
-            <Text style={styles.content}>
-                Surat keterangan ini berlaku untuk satu kali keperluan.
+                Surat keterangan ini berlaku untuk keperluan administrasi yang bersangkutan.
             </Text>
             <Text style={styles.content}>
                 Demikian surat keterangan ini kami buat, untuk dipergunakan sebagaimana mestinya.
             </Text>
             <View style={styles.signature}>
-                <Text>Medan, {date}</Text>
+                <Text>{date}</Text>
                 <Text style={styles.signatureName}>{issuer}</Text>
-                {/* <Text>Lurah Mawar Mekar</Text> */}
+                <Text>Lurah Naman Jahe</Text>
             </View>
         </Page>
     </Document>
 );
 
-export default SKTM;
+export default AK;

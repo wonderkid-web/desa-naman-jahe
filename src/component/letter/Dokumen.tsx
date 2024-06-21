@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 const Dokumen = ({ logo, sender, recipient, date, subject, body }:any) => (
     <Document>
         <Page style={styles.page}>
-            <Header logo={'./logo.jpg'} />
+            <Header />
             <View style={styles.section}>
                 <Text>{sender}</Text>
                 <Text>{recipient}</Text>

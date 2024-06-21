@@ -1,8 +1,8 @@
 // @ts-nocheck
 "use client"
 // File: Header.js
-import React from 'react';
 import { View, Text, Image, StyleSheet } from '@react-pdf/renderer';
+import logo from '../lett../letter/logo.jpger/logo.jpg'
 
 const styles = StyleSheet.create({
     header: {
@@ -47,10 +47,10 @@ const styles = StyleSheet.create({
     },
 });
 
-const Header = ({ logo }) => (
+const Header = () => (
     <View style={styles.header}>
         <View style={styles.logoContainer}>
-            <Image style={styles.logo} src={"./logo.jpg"} />
+        <Image  src={"/logo.jpg"} />
         </View>
         <View style={styles.titleContainer}>
             <Text style={styles.titleText}>PEMERINTAH KABUPATEN LANGKAT</Text>
