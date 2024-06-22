@@ -12,7 +12,7 @@ const PDFViewer = dynamic(
   {
     ssr: false,
     loading: () => <p>Loading...</p>,
-  },
+  }
 );
 export default function Home() {
   const {
@@ -83,10 +83,14 @@ export default function Home() {
               <label className="block text-sm font-medium text-gray-700">
                 Jenis Kelamin:
               </label>
-              <input
+              <select
                 {...register("gender", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
+              >
+                <option value="">Pilih</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+              </select>
               {errors.gender && (
                 <span className="text-red-600 text-sm">
                   This field is required
@@ -125,10 +129,18 @@ export default function Home() {
               <label className="block text-sm font-medium text-gray-700">
                 Agama:
               </label>
-              <input
+              <select
                 {...register("religion", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
+              >
+                <option value="">Pilih</option>
+                <option value="Islam">Islam</option>
+                <option value="Kristen">Kristen</option>
+                <option value="Katolik">Katolik</option>
+                <option value="Hindu">Hindu</option>
+                <option value="Budha">Budha</option>
+                <option value="Konghucu">Konghucu</option>
+              </select>
               {errors.religion && (
                 <span className="text-red-600 text-sm">
                   This field is required
@@ -244,7 +256,6 @@ export default function Home() {
         {formData && (
           <PDFViewer width="50%" height="600">
             <SKTM
-            
               name={formData.name}
               nik={formData.nik}
               dob={formData.dob}
