@@ -2,10 +2,12 @@
 // File: Home.js
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import SKTM from "@/component/letter/SKTM";
 import dynamic from "next/dynamic";
+import { getNomorSurat } from "@/helper";
+import TombolSelesai from "@/component/letter/TombolSelesai";
 
 const PDFViewer = dynamic(
   () => import("@react-pdf/renderer").then((mod) => mod.PDFViewer),
@@ -21,10 +23,28 @@ export default function Home() {
     formState: { errors },
   } = useForm();
   const [formData, setFormData] = useState(true);
+  const [nomorSurat, setNomorSurat] = useState(null);
 
   const onSubmit = (data) => {
     setFormData(data);
   };
+
+  const getData = async () => {
+    const { nomor_surat } = await getNomorSurat();
+
+    return nomor_surat;
+  };
+
+  useEffect(() => {
+    getData().then((data) => {
+      console.log(data);
+      setNomorSurat(data[0].nomor);
+    });
+  }, []);
+
+  // if(!nomorSurat.length) return <p>Loading...</p>
+
+  if (!nomorSurat) return <p>Loading...</p>;
 
   return (
     <main className="w-full h-full">
@@ -252,10 +272,13 @@ export default function Home() {
           >
             Generate PDF
           </button>
+          {formData && <TombolSelesai />}
+
         </form>
         {formData && (
           <PDFViewer width="50%" height="600">
             <SKTM
+              nomorSurat={nomorSurat}
               name={formData.name}
               nik={formData.nik}
               dob={formData.dob}

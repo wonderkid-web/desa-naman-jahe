@@ -51,12 +51,14 @@ const styles = StyleSheet.create({
     },
 });
 
-const AK = ({ name, nik, dob, gender, status, occupation, religion, address, skDate, applicantName, applicantDob, schoolName, issuer, date }:any) => (
+const currentYear = new Date().getFullYear()
+
+const AK = ({ nomor_surat, name, nik, dob, gender, status, occupation, religion, address, skDate, applicantName, applicantDob, schoolName, issuer, date }:any) => (
     <Document>
         <Page style={styles.page}>
             <Header />
             <Text style={styles.title}>KUTIPAN AKTA KEMATIAN</Text>
-            <Text style={styles.letterNumber}>Nomor: 1234/AK/VI/2023</Text>
+            <Text style={styles.letterNumber}>Nomor: {nomor_surat}/AK/VI/{currentYear}</Text>
             <Text style={styles.content}>
                 Berdasarkan Surat Kematian Nomor: {nik}, dengan ini kami menerangkan bahwa:
             </Text>

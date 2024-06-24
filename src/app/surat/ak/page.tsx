@@ -2,17 +2,19 @@
 // File: Home.js
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import AK from "@/component/letter/AK";
 import dynamic from "next/dynamic";
+import { getNomorSurat } from "@/helper";
+import TombolSelesai from "@/component/letter/TombolSelesai";
 
 const PDFViewer = dynamic(
   () => import("@react-pdf/renderer").then((mod) => mod.PDFViewer),
   {
     ssr: false,
     loading: () => <p>Loading...</p>,
-  },
+  }
 );
 
 export default function Home() {
@@ -21,14 +23,33 @@ export default function Home() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [formData, setFormData] = useState(true);
+  const [formData, setFormData] = useState(null);
+  const [nomorSurat, setNomorSurat] = useState(null);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setFormData(data);
   };
 
+  const getData = async () => {
+    const { nomor_surat } = await getNomorSurat();
+
+    return nomor_surat;
+  };
+
+  useEffect(() => {
+    getData().then((data) => {
+      console.log(data);
+      setNomorSurat(data[0].nomor);
+    });
+  }, []);
+
+  // if(!nomorSurat.length) return <p>Loading...</p>
+
+  if (!nomorSurat) return <p>Loading...</p>;
+
   return (
     <main className="w-full h-full">
+      {/* {nomorSurat} */}
       <h1 className="text-center my-4 text-3xl font-bold">
         Form Kutipan Akta Kematian
       </h1>
@@ -261,10 +282,12 @@ export default function Home() {
           >
             Generate PDF
           </button>
+          {formData && <TombolSelesai />}
         </form>
         {formData && (
           <PDFViewer width="50%" height="600">
             <AK
+              nomor_surat={nomorSurat}
               name={formData.name}
               nik={formData.nik}
               dob={formData.dob}

@@ -51,12 +51,14 @@ const styles = StyleSheet.create({
     },
 });
 
-const SKTM = ({ name, dob, address, nik, gender, status, occupation, religion, skDate, applicantName, applicantDob, schoolName, issuer, date }) => (
+const currYear = new Date().getFullYear()
+
+const SKTM = ({ nomorSurat, name, dob, address, nik, gender, status, occupation, religion, skDate, applicantName, applicantDob, schoolName, issuer, date }) => (
     <Document>
         <Page style={styles.page}>
             <Header />
             <Text style={styles.title}>SURAT KETERANGAN TIDAK MAMPU</Text>
-            <Text style={styles.letterNumber}>Nomor: 468/SKTM/IX/2020</Text>
+            <Text style={styles.letterNumber}>Nomor: {nomorSurat}/SKTM/IX/{currYear}</Text>
             <Text style={styles.content}>
                 Lurah Mawar Mekar Kecamatan Ujung Atas dengan ini menerangkan bahwa:
             </Text>

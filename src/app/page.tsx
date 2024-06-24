@@ -1,10 +1,12 @@
 import Link from "next/link";
 import foto1 from "../../public/pertama.jpg";
 import foto3 from "../../public/keempat.jpg";
-import foto2 from "../../public/kedua.jpg"
+import foto2 from "../../public/kedua.jpg";
 import Image from "next/image";
+import { getNomorSurat } from "@/helper";
 
-export default function Home() {
+export default async function Home() {
+
   const hubungiAdmin = () => {
     const template = `Hubungi Admin Desa Naman Jahe ?`.replace(/ /g, "%20");
     return `https://wa.me/6283190655152?text=${template}`;
@@ -19,7 +21,8 @@ export default function Home() {
               Desa Naman Jahe
             </h1>
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-              Selamat datang di website resmi Desa Naman Jahe. Temukan keindahan alam, budaya, dan potensi desa kami.
+              Selamat datang di website resmi Desa Naman Jahe. Temukan keindahan
+              alam, budaya, dan potensi desa kami.
             </p>
             <Link
               href={hubungiAdmin()}
@@ -50,7 +53,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
       <section className="bg-gray-50 dark:bg-gray-800">
         <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
           <div className="max-w-screen-md mb-8 lg:mb-16">
@@ -58,7 +61,8 @@ export default function Home() {
               Potensi Desa Naman Jahe
             </h2>
             <p className="text-gray-500 sm:text-xl dark:text-gray-400">
-              Desa Naman Jahe memiliki berbagai potensi yang dapat dikembangkan untuk kesejahteraan masyarakat.
+              Desa Naman Jahe memiliki berbagai potensi yang dapat dikembangkan
+              untuk kesejahteraan masyarakat.
             </p>
           </div>
           <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
@@ -81,7 +85,8 @@ export default function Home() {
                 Pertanian
               </h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Lahan pertanian yang subur dengan hasil panen berkualitas tinggi, termasuk padi, jagung, dan sayuran.
+                Lahan pertanian yang subur dengan hasil panen berkualitas
+                tinggi, termasuk padi, jagung, dan sayuran.
               </p>
             </div>
             <div>
@@ -95,9 +100,12 @@ export default function Home() {
                   <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
                 </svg>
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Wisata Alam</h3>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">
+                Wisata Alam
+              </h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Keindahan alam yang memukau dengan potensi pengembangan ekowisata dan agrowisata.
+                Keindahan alam yang memukau dengan potensi pengembangan
+                ekowisata dan agrowisata.
               </p>
             </div>
             <div>
@@ -116,11 +124,10 @@ export default function Home() {
                   <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
                 </svg>
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
-                UMKM
-              </h3>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">UMKM</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Usaha Mikro, Kecil, dan Menengah yang berkembang, menciptakan lapangan kerja dan meningkatkan ekonomi lokal.
+                Usaha Mikro, Kecil, dan Menengah yang berkembang, menciptakan
+                lapangan kerja dan meningkatkan ekonomi lokal.
               </p>
             </div>
           </div>
@@ -134,9 +141,16 @@ export default function Home() {
               Tentang Desa Naman Jahe
             </h2>
             <p className="mb-4">
-              Desa Naman Jahe adalah sebuah desa yang kaya akan tradisi dan keindahan alam. Terletak di Kabupaten Langkat, desa ini memiliki potensi besar dalam bidang pertanian, pariwisata, dan pengembangan UMKM. Kami berkomitmen untuk memajukan desa melalui pemberdayaan masyarakat dan pelestarian budaya lokal.
+              Desa Naman Jahe adalah sebuah desa yang kaya akan tradisi dan
+              keindahan alam. Terletak di Kabupaten Langkat, desa ini memiliki
+              potensi besar dalam bidang pertanian, pariwisata, dan pengembangan
+              UMKM. Kami berkomitmen untuk memajukan desa melalui pemberdayaan
+              masyarakat dan pelestarian budaya lokal.
             </p>
-            <p>Mari bersama-sama membangun Desa Naman Jahe menjadi desa yang maju, sejahtera, dan berkelanjutan.</p>
+            <p>
+              Mari bersama-sama membangun Desa Naman Jahe menjadi desa yang
+              maju, sejahtera, dan berkelanjutan.
+            </p>
           </div>
           <div className="grid grid-cols-2 gap-4 mt-8">
             <div className="w-64 h-64">

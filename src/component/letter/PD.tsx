@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   },
 });
 
+
 const PD = ({ name, gender, dob, nik, occupation, religion, nationality, address }: any) => (
   <Document>
     <Page style={styles.page}>
