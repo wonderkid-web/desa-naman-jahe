@@ -180,39 +180,34 @@ export default async function Home() {
           </div>
           <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
             <h2 className="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">
-              Destinasi Wisata Desa Naman Jahe
+              Menjelajahi Keindahan Desa Naman Jahe dengan Bebek Dayung
             </h2>
+
             <p className="mb-4">
-              Desa Naman Jahe adalah sebuah desa yang kaya akan tradisi dan
-              keindahan alam. Terletak di Kabupaten Langkat, desa ini memiliki
-              potensi besar dalam bidang pertanian, pariwisata, dan pengembangan
-              UMKM. Kami berkomitmen untuk memajukan desa melalui pemberdayaan
-              masyarakat dan pelestarian budaya lokal.
-            </p>
-            <p>
-              Mari bersama-sama membangun Desa Naman Jahe menjadi desa yang
-              maju, sejahtera, dan berkelanjutan.
-            </p>
+              Di Desa Wisata Naman Jahe, nikmati sensasi wisata air yang tak
+              terlupakan dengan berpetualang menyusuri danau Telagah Asri dengan
+              bebek dayung. Rasakan ketenangan dan kesejukan alam pedesaan yang
+              masih asri saat Anda mendayung di atas air danau yang jernih.
+            </p>Menjelajahi Keindahan Desa Naman Jahe dengan Bebek Dayung
           </div>
         </div>
       </section>
 
       <section className="bg-white dark:bg-gray-900">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+        <div className="px-4 mx-auto max-w-screen-xl sm:py-4 lg:px-6">
           <div className="mx-auto max-w-screen-sm text-center">
             <h2 className="mb-4 text-4xl font-extrabold leading-tight text-gray-900 dark:text-white">
               Kunjungi Desa Naman Jahe
             </h2>
-            <p className="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">
+            <p className="mb-2 font-light text-gray-500 dark:text-gray-400 md:text-lg">
               Temukan keramahan penduduk dan keindahan alam Desa Naman Jahe
             </p>
           </div>
         </div>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63717.065671574375!2d98.24024314215295!3d3.51406221635819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3030c510aaa9cb99%3A0xbb70567a35550cf5!2sNaman%20Jahe%2C%20Kec.%20Salapian%2C%20Kabupaten%20Langkat%2C%20Sumatera%20Utara!5e0!3m2!1sid!2sid!4v1719920854674!5m2!1sid!2sid"
-          
           height="450"
-          style={{border: "0"}}
+          style={{ border: "0" }}
           loading="lazy"
           referrerPolicy=""
           className="mx-auto w-full"
