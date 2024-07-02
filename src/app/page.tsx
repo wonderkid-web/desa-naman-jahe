@@ -1,7 +1,8 @@
 import Link from "next/link";
-import foto1 from "../../public/pertama.jpg";
-import foto3 from "../../public/keempat.jpg";
-import foto2 from "../../public/kedua.jpg";
+import foto1 from "../../public/depan.jpeg";
+import foto3 from "../../public/tiga.jpeg";
+import foto2 from "../../public/dua.jpeg";
+import foto4 from "../../public/pertama.jpg";
 import Image from "next/image";
 import { getNomorSurat } from "@/helper";
 import { supabaseClient } from "@/lib/supabase";
@@ -152,8 +153,8 @@ export default async function Home() {
               maju, sejahtera, dan berkelanjutan.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4 mt-8">
-            <div className="w-64 h-64">
+          <div className="grid grid-cols-2  gap-4 mt-8">
+            <div className="w-64 h-64 col-start-2">
               <Image
                 src={foto2}
                 alt="Desa Naman Jahe"
@@ -161,14 +162,37 @@ export default async function Home() {
                 objectPosition="center"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white dark:bg-gray-900">
+        <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+          <div className="grid grid-cols-1 gap-4 mt-8">
             <div className="w-64 h-64">
               <Image
                 src={foto3}
-                alt="Kegiatan Desa"
+                alt="Desa Naman Jahe"
                 objectFit="cover"
                 objectPosition="center"
               />
             </div>
+          </div>
+          <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+            <h2 className="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">
+              Destinasi Wisata Desa Naman Jahe
+            </h2>
+            <p className="mb-4">
+              Desa Naman Jahe adalah sebuah desa yang kaya akan tradisi dan
+              keindahan alam. Terletak di Kabupaten Langkat, desa ini memiliki
+              potensi besar dalam bidang pertanian, pariwisata, dan pengembangan
+              UMKM. Kami berkomitmen untuk memajukan desa melalui pemberdayaan
+              masyarakat dan pelestarian budaya lokal.
+            </p>
+            <p>
+              Mari bersama-sama membangun Desa Naman Jahe menjadi desa yang
+              maju, sejahtera, dan berkelanjutan.
+            </p>
           </div>
         </div>
       </section>
@@ -184,6 +208,15 @@ export default async function Home() {
             </p>
           </div>
         </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63717.065671574375!2d98.24024314215295!3d3.51406221635819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3030c510aaa9cb99%3A0xbb70567a35550cf5!2sNaman%20Jahe%2C%20Kec.%20Salapian%2C%20Kabupaten%20Langkat%2C%20Sumatera%20Utara!5e0!3m2!1sid!2sid!4v1719920854674!5m2!1sid!2sid"
+          
+          height="450"
+          style={{border: "0"}}
+          loading="lazy"
+          referrerPolicy=""
+          className="mx-auto w-full"
+        ></iframe>
       </section>
     </main>
   );
