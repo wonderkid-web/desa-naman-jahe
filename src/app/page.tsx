@@ -4,9 +4,9 @@ import foto3 from "../../public/keempat.jpg";
 import foto2 from "../../public/kedua.jpg";
 import Image from "next/image";
 import { getNomorSurat } from "@/helper";
+import { supabaseClient } from "@/lib/supabase";
 
 export default async function Home() {
-
   const hubungiAdmin = () => {
     const template = `Hubungi Admin Desa Naman Jahe ?`.replace(/ /g, "%20");
     return `https://wa.me/6283190655152?text=${template}`;

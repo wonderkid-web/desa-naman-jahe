@@ -16,18 +16,20 @@ const Wrapper = ({ children }: any) => {
     await signOut()
   }
 
+  const hidden = pathname.includes("/signin") || pathname.includes("/signup")
+
   return (
     <SessionProvider>
       <div
         style={{
-          backgroundColor: "#38a169",
+          backgroundColor: `${hidden ? "#38a169" : "white"}`,
           minHeight: "100vh",
           padding: "1rem",
-          color: "white",
         }}
       >
-        <div style={{ display: "block" }}>
+        <div className={`${ hidden ? "hidden" : "flex"} flex-col justify-center`}>
           <div
+          className={`self-center flex-col ${hidden ? "#38a169" : "white"}`}
             style={{
               padding: "0.25rem",
               fontSize: "0.75rem",
@@ -40,30 +42,29 @@ const Wrapper = ({ children }: any) => {
             <Image
               src={"/logo.jpg"}
               alt="logo"
-              width={50}
-              height={50}
+              width={70}
+              height={70}
               className="rounded-full"
             />
             <div
+            className="justify-center items-center"
               style={{
                 display: "flex",
                 flexDirection: "column",
                 gap: "0.5rem",
               }}
             >
-              <Link href={"/"} style={{ fontWeight: "bold" }}>
+              <Link className="text-xl" href={"/"} style={{ fontWeight: "bold" }}>
                 Menu Administrasi
               </Link>
-              <span>Desa Naman Jahe</span>
+              <span className="text-lg">Desa Naman Jahe</span>
             </div>
           </div>
           <div
+          className={`justify-between bg-green-700 text-white flex ${ hidden ? "hidden" : "flex"}`}
             style={{
-              display: "flex",
-              flexDirection: "column",
               gap: "0.5rem",
               fontSize: "0.875rem",
-              backgroundColor: "#2f855a",
               padding: "0.5rem",
               borderRadius: "0.25rem",
               fontWeight: "600",
@@ -75,7 +76,7 @@ const Wrapper = ({ children }: any) => {
               <div
                 style={{ width: "2rem", height: "2rem", position: "relative" }}
               >
-                <Image src={contract} alt="logo" objectFit="cover" />
+                {/* <Image src={contract} alt="logo" objectFit="cover" /> */}
               </div>
               <Link href={"/surat/sktm"}>Keterangan Tidak Mampu</Link>
             </div>
@@ -85,7 +86,7 @@ const Wrapper = ({ children }: any) => {
               <div
                 style={{ width: "2rem", height: "2rem", position: "relative" }}
               >
-                <Image src={contract} alt="logo" objectFit="cover" />
+                {/* <Image src={contract} alt="logo" objectFit="cover" /> */}
               </div>
               <Link href={"/surat/ak"}>Akter Kematian</Link>
             </div>
@@ -95,7 +96,7 @@ const Wrapper = ({ children }: any) => {
               <div
                 style={{ width: "2rem", height: "2rem", position: "relative" }}
               >
-                <Image src={contract} alt="logo" objectFit="cover" />
+                {/* <Image src={contract} alt="logo" objectFit="cover" /> */}
               </div>
               <Link href={"/surat/pd"}>Pindah Domisili</Link>
             </div>
@@ -105,9 +106,9 @@ const Wrapper = ({ children }: any) => {
               <div
                 style={{ width: "2rem", height: "2rem", position: "relative" }}
               >
-                <Image src={logout} alt="logo" objectFit="cover" />
+                {/* <Image src={logout} alt="logo" objectFit="cover" /> */}
               </div>
-              <button onClick={()=>handleLogout()}>logout</button>
+              <button className="bg-green-600 text-white rounded-md px-2 py-1" onClick={()=>handleLogout()}>logout</button>
             </div>
           </div>
         </div>

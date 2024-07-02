@@ -48,7 +48,7 @@ export default function Home() {
 
   return (
     <main className="w-full h-full">
-      <h1 className="text-center my-4 text-3xl font-bold">
+      <h1 className="text-center my-4 text-3xl font-bold #38a169">
         Form Surat Keterangan Tidak Mampu
       </h1>
       <div className="flex gap-4">

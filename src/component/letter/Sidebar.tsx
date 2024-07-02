@@ -13,7 +13,7 @@ export default function Sidebar() {
 
   return (
     <div style={{display:`${showSidebar ? "flex" : "none"}`}} className={` bg-green-500 min-h-screen p-4 text-white md:flex-col gap-2`}>
-      <div className="py-1 px-1 text-xs rounded-sm text-white border-md flex gap-2">
+      <div className="py-1 px-1 text-xs rounded-sm text-white border-md flex gap-2 justify-center  items-center bg-red-400">
         <Image
           src={"/logo.jpg"}
           alt="logo"

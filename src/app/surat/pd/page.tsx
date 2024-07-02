@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import DomisiliPDF from '@/component/letter/PD';
 import dynamic from "next/dynamic";
+import TombolSelesai from '@/component/letter/TombolSelesai';
 
 const PDFViewer = dynamic(
   () => import("@react-pdf/renderer").then((mod) => mod.PDFViewer),
@@ -23,7 +24,7 @@ export default function Page() {
 
   return (
     <main className="w-full h-full">
-      <h1 className="text-center my-4 text-3xl font-bold">
+      <h1 className="text-center my-4 text-3xl font-bold #38a169">
         Form Surat Keterangan Domisili
       </h1>
       <div className="flex gap-4">
@@ -154,6 +155,7 @@ export default function Page() {
           >
             Generate PDF
           </button>
+          {/* {formData && <TombolSelesai />} */}
         </form>
         {formData && (
           <PDFViewer width="50%" height="600">

@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { supabaseClient } from "@/lib/supabase";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -16,6 +17,9 @@ export const option: AuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
+        const {data} = await supabaseClient.from("akun").select("*").eq("nik", credentials.nik).eq("password", credentials?.password)
+
+
         // You need to provide your own logic here that takes the credentials
         // submitted and returns either a object representing a user or value
         // that is false/null if the credentials are invalid.
@@ -32,12 +36,15 @@ export const option: AuthOptions = {
         // const user = await res.json();
 
         // If no error and we have user data, return it
-        if (credentials) {
-          return credentials;
+        if (data?.length) {
+          return data[0];
         }
         // Return null if user data could not be retrieved
         return null;
       },
     }),
   ],
+  pages:{
+    signIn: "/auth/signin",
+  }
 };

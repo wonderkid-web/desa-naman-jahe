@@ -23,7 +23,7 @@ export default function Home() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [formData, setFormData] = useState(null);
+  const [formData, setFormData] = useState(true);
   const [nomorSurat, setNomorSurat] = useState(null);
 
   const onSubmit = async (data) => {
@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <main className="w-full h-full">
       {/* {nomorSurat} */}
-      <h1 className="text-center my-4 text-3xl font-bold">
+      <h1 className="text-center my-4 text-3xl font-bold #38a169">
         Form Kutipan Akta Kematian
       </h1>
       <div className="flex gap-4">
