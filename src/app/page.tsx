@@ -1,11 +1,10 @@
+
 import Link from "next/link";
 import foto1 from "../../public/depan.jpeg";
 import foto3 from "../../public/tiga.jpeg";
 import foto2 from "../../public/dua.jpeg";
 import foto4 from "../../public/pertama.jpg";
 import Image from "next/image";
-import { getNomorSurat } from "@/helper";
-import { supabaseClient } from "@/lib/supabase";
 
 export default async function Home() {
   const hubungiAdmin = () => {
@@ -165,7 +164,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-
       <section className="bg-white dark:bg-gray-900">
         <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
           <div className="grid grid-cols-1 gap-4 mt-8">

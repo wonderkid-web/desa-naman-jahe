@@ -25,13 +25,13 @@ function Page() {
   }
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 pb-4">
+    <section className="bg-gray-50 dark:bg-gray-900 pb-4 min-h-[120vh]">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <Link
           href="/"
           className="flex items-center mb-12 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          <div className="w-24 h-24 relative">
+          <div className="w-24 h-24 relative mt-12">
             <Image src={logo} alt="logo" objectFit="cover" />
           </div>
         </Link>
