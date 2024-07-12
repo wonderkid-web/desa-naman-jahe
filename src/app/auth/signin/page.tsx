@@ -7,20 +7,28 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { FormLogin } from "@/types";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { useState } from "react";
 
 function Page() {
   const { handleSubmit, register } = useForm<FormLogin>();
+  const [load, setLoad] = useState(false)
   const router = useRouter()
 
   const onSubmit:SubmitHandler<FormLogin> = async (form) =>{
+    setLoad(true)
     
     const signin = await signIn("credentials", {
         ...form,
         redirect: false,
     })
 
+    setLoad(false)
+
     if(signin?.ok){
-        router.push('/')
+      router.push('/')
+    }else{
+      toast.warning("NIK atau Password kamu salah nih")
     }
   }
 
@@ -76,9 +84,9 @@ function Page() {
 
               <button
                 type="submit"
-                className="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                className={`${load ? 'bg-green-400' : 'bg-green-600'} w-full text-white hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800`}
               >
-                Sign in
+               {load ? "Authentikasi..." : "Sign in"}
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Belum punya akun? daftar disini {"->  "}

@@ -1,19 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import logo from "@/../../public/logo.jpg"
+import logo from "@/../../public/logo.jpg";
 import Image from "next/image";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FormRegister } from "@/types";
 import { useRouter } from "next/navigation";
 import { supabaseClient } from "@/lib/supabase";
-
+import { useState } from "react";
+import { toast } from "sonner";
 
 function RegisterPage() {
   const { handleSubmit, register } = useForm<FormRegister>();
   const router = useRouter();
+  const [load, setLoad] = useState(false);
 
   const onSubmit: SubmitHandler<FormRegister> = async (form) => {
+    setLoad(true);
     // Your registration logic here
 
     const { error } = await supabaseClient.from("akun").insert([
@@ -24,7 +27,9 @@ function RegisterPage() {
 
     // If registration is successful, redirect to login or home page
     if (!error) {
-      router.push('/');
+      router.push("/");
+    } else {
+      toast.warning("Gagal Mendaftarkan akun");
     }
   };
 
@@ -107,9 +112,11 @@ function RegisterPage() {
                 Sudah punya akun? login disini {"->  "}
                 <Link
                   href="/login"
-                  className="font-medium text-green-600 hover:underline dark:text-green-500"
+                  className={`${
+                    load ? "bg-green-400" : "bg-green-600"
+                  } w-full text-white hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800`}
                 >
-                  Sign in
+                  {load ? "Authentikasi..." : "Sign in"}
                 </Link>
               </p>
             </form>
