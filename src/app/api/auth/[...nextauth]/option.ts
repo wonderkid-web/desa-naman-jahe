@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { supabaseClient } from "@/lib/supabase";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -6,45 +5,74 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const option: AuthOptions = {
   providers: [
     CredentialsProvider({
-      // The name to display on the sign in form (e.g. 'Sign in with...')
       name: "Credentials",
-      // The credentials is used to generate a suitable form on the sign in page.
-      // You can specify whatever fields you are expecting to be submitted.
-      // e.g. domain, username, password, 2FA token, etc.
-      // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        nik: { label: "NIK", type: "text", placeholder: "Masukkan NIK" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const {data} = await supabaseClient.from("akun").select("*").eq("nik", credentials.nik).eq("password", credentials?.password)
-
-
-        // You need to provide your own logic here that takes the credentials
-        // submitted and returns either a object representing a user or value
-        // that is false/null if the credentials are invalid.
-        // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-       
-        // You can also use the `req` object to obtain additional parameters
-        // (i.e., the request IP address)
-        
-        // const res = await fetch("/your/endpoint", {
-        //   method: "POST",
-        //   body: JSON.stringify(credentials),
-        //   headers: { "Content-Type": "application/json" },
-        // });
-        // const user = await res.json();
-
-        // If no error and we have user data, return it
-        if (data?.length) {
-          return data[0];
+        if (!credentials?.nik || !credentials?.password) {
+          return null;
         }
-        // Return null if user data could not be retrieved
+
+        if(credentials.nik === "000000" && credentials.password === "admin123"){
+          return{
+            id: "000000",
+            nik: "000000",
+            nama: "admin"
+          }
+        }
+
+        const { data, error } = await supabaseClient
+          .from("akun")
+          .select("*")
+          .eq("nik", credentials.nik)
+          .single();
+
+        if (error || !data) {
+          return null;
+        }
+
+        // Periksa password di sini (gunakan bcrypt jika password di-hash)
+        if (data.password === credentials.password) {
+          // Kembalikan objek pengguna dengan properti yang diharapkan oleh NextAuth
+          return {
+            id: data.id,
+            nama: data.nama, // Sesuaikan dengan nama kolom di tabel Anda
+            // email: data.email, // Sesuaikan dengan nama kolom di tabel Anda
+            nik: data.nik,
+          };
+        }
+
         return null;
       },
     }),
   ],
-  pages:{
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        // token.id = user.id;
+        // @ts-ignore
+        token.nik = user.nik;
+        // @ts-ignore
+        token.nama = user.nama;
+      }
+      return token;
+    },
+
+    async session({ session, token }) {
+      if (token || session) {
+        // @ts-ignore
+        // session.user.id = token.id;
+        // @ts-ignore
+        session.user.nik = token.nik;
+        // @ts-ignore
+        session.user.nama = token.nama;
+      }
+      return session;
+    },
+  },
+  pages: {
     signIn: "/auth/signin",
-  }
+  },
 };

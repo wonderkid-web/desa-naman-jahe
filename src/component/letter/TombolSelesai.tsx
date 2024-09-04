@@ -1,26 +1,45 @@
 "use client";
 
-import { getNomorSurat } from "@/helper";
+// import { getNomorSurat } from "@/helper";
 import { supabaseClient } from "@/lib/supabase";
-import { useRouter } from "next/navigation";
+import { getSession } from "next-auth/react";
+import { usePathname, useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function TombolSelesai() {
   const router = useRouter();
+  const pathname = usePathname()
+
+  const typeSurat = pathname.split("/")[length+1]
 
   const increaseNomorSurat = async () => {
-    let { nomor_surat } = await getNomorSurat();
+    // @ts-ignore
 
-    if (nomor_surat) {
-      const {error} =  await supabaseClient
-      .from("nomor_surat")
-      .update({
-        nomor: (nomor_surat[0].nomor += 1),
-      })
-      .eq("id", "1");
+    const {user} = await getSession()
 
+    const {error} = await supabaseClient.from("nomor_surat").insert([{
+      pengirim: user.nama,
+      type: typeSurat,
+      nik: user.nik
+    }])
+      toast.success("berhasil membuat surat")
       if(!error) router.refresh()
-    }
+
+
+    // let { nomor_surat } = await getNomorSurat();
+
+    // if (nomor_surat) {
+    //   const {error} =  await supabaseClient
+    //   .from("nomor_surat")
+    //   .update({
+    //     nomor: (nomor_surat[0].nomor += 1),
+    //   })
+    //   .eq("id", "1");
+
+    //   if(!error) router.refresh()
+    // }
   };
+
 
   return (
     <button

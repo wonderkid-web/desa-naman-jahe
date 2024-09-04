@@ -4,7 +4,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import SKTM from "@/component/letter/SKTM";
+import AK from "@/component/letter/AK";
 import dynamic from "next/dynamic";
 import { getNomorSurat } from "@/helper";
 import TombolSelesai from "@/component/letter/TombolSelesai";
@@ -16,16 +16,17 @@ const PDFViewer = dynamic(
     loading: () => <p>Loading...</p>,
   }
 );
+
 export default function Home() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [formData, setFormData] = useState(true);
+  const [formData, setFormData] = useState(false);
   const [nomorSurat, setNomorSurat] = useState(null);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setFormData(data);
   };
 
@@ -37,8 +38,8 @@ export default function Home() {
 
   useEffect(() => {
     getData().then((data) => {
-      console.log(data);
-      setNomorSurat(data[0].nomor);
+    setNomorSurat(data?.length);
+
     });
   }, []);
 
@@ -48,8 +49,9 @@ export default function Home() {
 
   return (
     <main className="w-full h-full">
+      {/* {nomorSurat} */}
       <h1 className="text-center my-4 text-3xl font-bold #38a169">
-        Form Surat Keterangan Tidak Mampu
+        Form Kutipan Akta Kematian
       </h1>
       <div className="flex gap-4">
         <form
@@ -121,10 +123,16 @@ export default function Home() {
               <label className="block text-sm font-medium text-gray-700">
                 Status Perkawinan:
               </label>
-              <input
+              <select
                 {...register("status", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
+              >
+                <option value="">Pilih</option>
+                <option value="Belum Kawin">Belum Kawin</option>
+                <option value="Kawin">Kawin</option>
+                <option value="Cerai Hidup">Cerai Hidup</option>
+                <option value="Cerai Mati">Cerai Mati</option>
+              </select>
               {errors.status && (
                 <span className="text-red-600 text-sm">
                   This field is required
@@ -186,6 +194,7 @@ export default function Home() {
                 Tanggal SK:
               </label>
               <input
+                type="date"
                 {...register("skDate", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
@@ -256,6 +265,7 @@ export default function Home() {
                 Tanggal:
               </label>
               <input
+                type="date"
                 {...register("date", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
@@ -273,12 +283,10 @@ export default function Home() {
             Generate PDF
           </button>
           {formData && <TombolSelesai />}
-
-        </form>
-        {formData && (
+        </form> 
           <PDFViewer width="50%" height="600">
-            <SKTM
-              nomorSurat={nomorSurat}
+            <AK
+              nomor_surat={nomorSurat}
               name={formData.name}
               nik={formData.nik}
               dob={formData.dob}
@@ -295,7 +303,6 @@ export default function Home() {
               date={formData.date}
             />
           </PDFViewer>
-        )}
       </div>
     </main>
   );

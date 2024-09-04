@@ -8,7 +8,7 @@ import logout from "@/../../public/logout.png";
 import { SessionProvider, signOut } from "next-auth/react";
 import { Toaster } from "sonner";
 
-const Wrapper = ({ children }: any) => {
+const WrapperAdmin = ({ children }: any) => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -92,7 +92,7 @@ const Wrapper = ({ children }: any) => {
               >
                 {/* <Image src={contract} alt="logo" objectFit="cover" /> */}
               </div>
-              <Link href={"/surat/sktm"}>Keterangan Tidak Mampu</Link>
+              <Link href={"/admin/akun"}>Table Hapus Akun</Link>
             </div>
             <div
               style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}
@@ -102,17 +102,7 @@ const Wrapper = ({ children }: any) => {
               >
                 {/* <Image src={contract} alt="logo" objectFit="cover" /> */}
               </div>
-              <Link href={"/surat/ak"}>Akter Kematian</Link>
-            </div>
-            <div
-              style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}
-            >
-              <div
-                style={{ width: "2rem", height: "2rem", position: "relative" }}
-              >
-                {/* <Image src={contract} alt="logo" objectFit="cover" /> */}
-              </div>
-              <Link href={"/surat/pd"}>Pindah Domisili</Link>
+              <Link href={"/admin/laporan"}>Table Laporan Surat</Link>
             </div>
             <div
               style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}
@@ -137,4 +127,4 @@ const Wrapper = ({ children }: any) => {
   );
 };
 
-export default Wrapper;
+export default WrapperAdmin;

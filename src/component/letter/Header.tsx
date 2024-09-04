@@ -17,14 +17,16 @@ const styles = StyleSheet.create({
         marginHorizontal: 'auto',
     },
     logoContainer: {
-        width: 120,
-        height: 120,
+        width: 100,
+        height: 100,
+        left: -15,
         position: 'relative',
     },
     logo: {
-        width: '90%',
-        height: '90%',
-        objectFit: 'cover',
+        // width: '90%',
+        // height: '90%',
+        borderRadius: 100
+        // objectFit: 'cover',
     },
     titleContainer: {
         display: 'flex',
@@ -50,14 +52,14 @@ const styles = StyleSheet.create({
 const Header = () => (
     <View style={styles.header}>
         <View style={styles.logoContainer}>
-        <Image  src={"/logo.jpg"} />
+        <Image  src={"/langkat.png"} style={styles.logo} />
         </View>
         <View style={styles.titleContainer}>
             <Text style={styles.titleText}>PEMERINTAH KABUPATEN LANGKAT</Text>
             <Text style={styles.titleText}>KECAMATAN BINJAI</Text>
-            <Text style={styles.titleText}>Desa Suka Makmur</Text>
-            <Text style={styles.address}>Alamat: Jl. Ponpes As`adiyah Km. 1 Email: desasukamakmur@desaku.com</Text>
-            <Text style={styles.contact}>Telp/Hp. 085729129241 Website: http://desasukamakmur.vercel.app</Text>
+            <Text style={styles.titleText}>Desa Naman Jahe</Text>
+            <Text style={styles.address}>Alamat: Jl. Ponpes As`adiyah Km. 1 </Text>
+            <Text style={styles.contact}>Telp/Hp. 085729129241 Website: http://desa-naman-jahe.vercel.app</Text>
             <Text style={styles.contact}> Kode Pos: 42320</Text>
         </View>
     </View>

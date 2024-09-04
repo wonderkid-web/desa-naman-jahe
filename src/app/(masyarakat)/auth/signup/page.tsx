@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import logo from "@/../../public/logo.jpg";
+import logo from "@/../../public/LOGO.png";
 import Image from "next/image";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FormRegister } from "@/types";
@@ -40,8 +40,8 @@ function RegisterPage() {
           href="/"
           className="mt-36 flex items-center mb-12 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          <div className="w-24 h-24 mt-10 relative">
-            <Image src={logo} alt="logo" objectFit="cover" />
+          <div className="w-72 h-24 relative mt-12">
+            <Image src={logo} alt="logo" objectFit="cover" className="bg-green-800 pr-2"/>
           </div>
         </Link>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">

@@ -1,9 +1,8 @@
 
 import Link from "next/link";
-import foto1 from "../../public/depan.jpeg";
-import foto3 from "../../public/tiga.jpeg";
-import foto2 from "../../public/dua.jpeg";
-import foto4 from "../../public/pertama.jpg";
+import foto1 from "../../../public/depan.jpeg";
+import foto3 from "../../../public/tiga.jpeg";
+import foto2 from "../../../public/dua.jpeg";
 import Image from "next/image";
 
 export default async function Home() {

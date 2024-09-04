@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import logo from "@/../../public/logo.jpg"
+import logo from "@/../../public/LOGO.png";
 import Image from "next/image";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FormLogin } from "@/types";
@@ -12,25 +12,29 @@ import { useState } from "react";
 
 function Page() {
   const { handleSubmit, register } = useForm<FormLogin>();
-  const [load, setLoad] = useState(false)
-  const router = useRouter()
+  const [load, setLoad] = useState(false);
+  const router = useRouter();
 
-  const onSubmit:SubmitHandler<FormLogin> = async (form) =>{
-    setLoad(true)
-    
+  const onSubmit: SubmitHandler<FormLogin> = async (form) => {
+    setLoad(true);
+
     const signin = await signIn("credentials", {
-        ...form,
-        redirect: false,
-    })
+      ...form,
+      redirect: false,
+    });
 
-    setLoad(false)
+    setLoad(false);
 
-    if(signin?.ok){
-      router.push('/')
-    }else{
-      toast.warning("NIK atau Password kamu salah nih")
+    if (signin?.ok) {
+      if (form.nik.includes("000000")) {
+        router.push("/admin");
+      } else {
+        router.push("/");
+      }
+    } else {
+      toast.warning("NIK atau Password kamu salah nih");
     }
-  }
+  };
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 pb-4 min-h-[120vh]">
@@ -39,8 +43,13 @@ function Page() {
           href="/"
           className="flex items-center mb-12 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          <div className="w-24 h-24 relative mt-12">
-            <Image src={logo} alt="logo" objectFit="cover" />
+          <div className="w-72 h-24 relative mt-12">
+            <Image
+              src={logo}
+              alt="logo"
+              objectFit="cover"
+              className="bg-green-800 pr-2"
+            />
           </div>
         </Link>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -48,7 +57,11 @@ function Page() {
             <h1 className="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Login Ke Website Naman Jahe
             </h1>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 md:space-y-6" action="#">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-4 md:space-y-6"
+              action="#"
+            >
               <div>
                 <label
                   htmlFor="nik"
@@ -84,9 +97,11 @@ function Page() {
 
               <button
                 type="submit"
-                className={`${load ? 'bg-green-400' : 'bg-green-600'} w-full text-white hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800`}
+                className={`${
+                  load ? "bg-green-400" : "bg-green-600"
+                } w-full text-white hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800`}
               >
-               {load ? "Authentikasi..." : "Sign in"}
+                {load ? "Authentikasi..." : "Sign in"}
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Belum punya akun? daftar disini {"->  "}
