@@ -17,10 +17,12 @@ interface TableLaporan {
 export default function Component() {
   const [data, setData] = useState<TableLaporan[] | null>([]);
   const [surat, setSurat] = useState<TableLaporan[] | null>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   // Sample data - replace this with your actual data
 
   useEffect(() => {
     (async () => {
+      setLoading(true);
       const { data }: PostgrestSingleResponse<TableLaporan[]> =
         await supabaseClient.from("nomor_surat").select("*");
 
@@ -30,11 +32,13 @@ export default function Component() {
       setSurat(surat);
 
       setData(data);
+
+      setLoading(false);
     })();
   }, []);
 
   // Define the columns based on the "Name" from your image
-  const columns = ["id", "created_at", "pengirim", "type", "nomor"];
+  const columns = ["id", "created_at", "pengirim", "type"];
 
   function formatDate(input: TableLaporan["created_at"]) {
     const date = new Date(input);
@@ -61,7 +65,8 @@ export default function Component() {
     });
   };
 
-  if (!data?.length) return <GreenLoader size="large" />;
+  if (loading) return <GreenLoader size="large" />;
+
   return (
     <div className="overflow-x-auto mt-4">
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -133,28 +138,36 @@ export default function Component() {
           </tr>
         </thead>
         <tbody className="bg-green-700">
-          {data.map((item) => (
-            <tr key={item.id} className="border-b border-green-600">
-              {columns.map((column) => (
-                <td
-                  key={`${item.id}-${column}`}
-                  className="px-6 py-4 whitespace-nowrap"
-                >
-                  {(column as keyof TableLaporan) == "created_at"
-                    ? formatDate(item["created_at"])
-                    : item[column as keyof TableLaporan]}
+          {data?.length ? (
+            data?.map((item) => (
+              <tr key={item.id} className="border-b border-green-600">
+                {columns.map((column) => (
+                  <td
+                    key={`${item.id}-${column}`}
+                    className="px-6 py-4 whitespace-nowrap"
+                  >
+                    {(column as keyof TableLaporan) == "created_at"
+                      ? formatDate(item["created_at"])
+                      : item[column as keyof TableLaporan]}
+                  </td>
+                ))}
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <button
+                    onClick={() => handleDelete(item.id)}
+                    className="bg-white px-4 py-1 hover:scale-110 transition text-green-800 rounded-md font-bold"
+                  >
+                    Hapus
+                  </button>
                 </td>
-              ))}
-              <td className="px-6 py-4 whitespace-nowrap">
-                <button
-                  onClick={() => handleDelete(item.id)}
-                  className="bg-white px-4 py-1 hover:scale-110 transition text-green-800 rounded-md font-bold"
-                >
-                  Hapus
-                </button>
+              </tr>
+            ))
+          ) : (
+            <tr className="border-b border-green-600 text-2xl">
+              <td colSpan={6} className="px-6 py-4 whitespace-nowrap text-lg text-left">
+                Belum Ada Surat
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

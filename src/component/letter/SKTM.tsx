@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         fontWeight:"ultrabold"
     },
     signature: {
-        marginTop: 50,
+        marginTop: 30,
         fontSize: 12,
         textAlign: 'right',
     },

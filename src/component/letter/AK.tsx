@@ -123,7 +123,7 @@ const AK = ({ nomor_surat, name, nik, dob, gender, status, occupation, religion,
                 Demikian surat keterangan ini kami buat, untuk dipergunakan sebagaimana mestinya.
             </Text>
             <View style={styles.signature}>
-                <Text>{date}</Text>
+                <Text>Medan, {date}</Text>
                 <Text style={styles.signatureName}>{issuer}</Text>
                 <Text>Lurah Naman Jahe</Text>
             </View>

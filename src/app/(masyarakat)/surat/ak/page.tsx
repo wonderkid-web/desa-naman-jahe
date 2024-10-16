@@ -8,12 +8,14 @@ import AK from "@/component/letter/AK";
 import dynamic from "next/dynamic";
 import { getNomorSurat } from "@/helper";
 import TombolSelesai from "@/component/letter/TombolSelesai";
+import GreenLoader from "@/component/GreenLoader";
 
 const PDFViewer = dynamic(
   () => import("@react-pdf/renderer").then((mod) => mod.PDFViewer),
   {
     ssr: false,
-    loading: () => <p>Loading...</p>,
+    loading: () => <GreenLoader size="large" />,
+
   }
 );
 
@@ -45,7 +47,7 @@ export default function Home() {
 
   // if(!nomorSurat.length) return <p>Loading...</p>
 
-  if (!nomorSurat) return <p>Loading...</p>;
+  // if (!nomorSurat) return <p>Loading...</p>;
 
   return (
     <main className="w-full h-full">

@@ -7,6 +7,7 @@ import contract from "@/../../public/contract.png";
 import logout from "@/../../public/logout.png";
 import { SessionProvider, signOut } from "next-auth/react";
 import { Toaster } from "sonner";
+import logo from '/public/LOGO.png'
 
 const Wrapper = ({ children }: any) => {
   const pathname = usePathname();
@@ -48,7 +49,7 @@ const Wrapper = ({ children }: any) => {
             }}
           >
             <Image
-              src={"/LOGO.png"}
+              src={logo}
               alt="logo"
               width={350}
               height={350}

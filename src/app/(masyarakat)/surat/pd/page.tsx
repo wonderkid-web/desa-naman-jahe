@@ -5,12 +5,14 @@ import { useForm } from 'react-hook-form';
 import DomisiliPDF from '@/component/letter/PD';
 import dynamic from "next/dynamic";
 import TombolSelesai from '@/component/letter/TombolSelesai';
+import GreenLoader from '@/component/GreenLoader';
 
 const PDFViewer = dynamic(
   () => import("@react-pdf/renderer").then((mod) => mod.PDFViewer),
   {
     ssr: false,
-    loading: () => <p>Loading...</p>,
+    loading: () => <GreenLoader size="large" />,
+
   },
 );
 
