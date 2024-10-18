@@ -54,6 +54,10 @@ const styles = StyleSheet.create({
 const currentYear = new Date().getFullYear();
 
 const remakeDate = (wrongDate: string) => {
+  if(!wrongDate) return ""
+
+  console.log(wrongDate)
+
   const namaBulanIndonesia = [
     "Januari",
     "Februari",
@@ -68,6 +72,7 @@ const remakeDate = (wrongDate: string) => {
     "November",
     "Desember",
   ];
+
   const [year, month, date] = wrongDate.split("-");
 
   return `${date}, ${namaBulanIndonesia[+month-1]} ${year}`;
