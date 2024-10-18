@@ -56,7 +56,7 @@ const Header = () => (
         </View>
         <View style={styles.titleContainer}>
             <Text style={styles.titleText}>PEMERINTAH KABUPATEN LANGKAT</Text>
-            <Text style={styles.titleText}>KECAMATAN BINJAI</Text>
+            <Text style={styles.titleText}>KECAMATAN Salapian</Text>
             <Text style={styles.titleText}>Desa Naman Jahe</Text>
             <Text style={styles.address}>Alamat: Jl. Ponpes As`adiyah Km. 1 </Text>
             <Text style={styles.contact}>Telp/Hp. 085729129241 Website: http://desa-naman-jahe.vercel.app</Text>

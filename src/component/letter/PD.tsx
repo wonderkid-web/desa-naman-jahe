@@ -51,7 +51,7 @@ const PD = ({ name, gender, dob, nik, occupation, religion, nationality, address
       <Header />
       <Text style={styles.title}>SURAT KETERANGAN PINDAH DOMISILI</Text>
       <Text style={styles.content}>
-        Yang bertanda tangan di bawah ini Ketua RT. 07 RW.10 Desa Naman Jahe Kecamatan Binjai Kabupaten Langkat, Menerangkan bahwa:
+        Yang bertanda tangan di bawah ini Kepala Desa Naman Jahe Kecamatan Salapian Kabupaten Langkat, Menerangkan bahwa:
       </Text>
       <View>
         <View style={styles.row}>
@@ -90,8 +90,8 @@ const PD = ({ name, gender, dob, nik, occupation, religion, nationality, address
       <Text style={styles.content}>
         Adalah benar-benar penduduk di alamat tersebut dan berwenang untuk membuat surat keterangan ini.
       </Text>
-      <Text style={styles.signature}>Anam Jahe, {new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</Text>
-      <Text style={styles.signature}>(Ketua RT. 07 RW.10)</Text>
+      <Text style={styles.signature}>Naman Jahe, {new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</Text>
+      <Text style={styles.signature}>Nobdi Nanda Ginting Suka</Text>
     </Page>
   </Document>
 );

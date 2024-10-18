@@ -60,7 +60,7 @@ const SKTM = ({ nomorSurat, name, dob, address, nik, gender, status, occupation,
             <Text style={styles.title}>SURAT KETERANGAN TIDAK MAMPU</Text>
             <Text style={styles.letterNumber}>Nomor: {nomorSurat}/SKTM/IX/{currYear}</Text>
             <Text style={styles.content}>
-                Lurah Mawar Mekar Kecamatan Ujung Atas dengan ini menerangkan bahwa:
+                Desa Naman Jahe dengan ini menerangkan bahwa:
             </Text>
             <View style={styles.section}>
                 <View style={styles.row}>
@@ -117,7 +117,7 @@ const SKTM = ({ nomorSurat, name, dob, address, nik, gender, status, occupation,
                 </View>
             </View>
             <Text style={styles.content}>
-                Surat Keterangan dinyatakan tidak berlaku apabila terjadi pelanggaran, peraturan Perundang-undangan dan Perda Kota Medan serta apabila terdapat kekeliruan dalam penulisan surat keterangan ini menjadi tanggung jawab pemohon/pemegang bersedia mempertanggungjawabkan secara hukum tanpa melibatkan pihak manapun.
+                Surat Keterangan dinyatakan tidak berlaku apabila terjadi pelanggaran, peraturan Perundang-undangan dan Pemkab Langkat serta apabila terdapat kekeliruan dalam penulisan surat keterangan ini menjadi tanggung jawab pemohon/pemegang bersedia mempertanggungjawabkan secara hukum tanpa melibatkan pihak manapun.
             </Text>
             <Text style={styles.content}>
                 Surat keterangan ini berlaku untuk satu kali keperluan.
@@ -126,7 +126,7 @@ const SKTM = ({ nomorSurat, name, dob, address, nik, gender, status, occupation,
                 Demikian surat keterangan ini kami buat, untuk dipergunakan sebagaimana mestinya.
             </Text>
             <View style={styles.signature}>
-                <Text>Medan, {date}</Text>
+                <Text>Salapian, {date}</Text>
                 <Text style={styles.signatureName}>{issuer}</Text>
                 <Text>Kepala Desa Naman Jahe</Text>
                 <Text>Nobdi Nanda Ginting Suka</Text>
