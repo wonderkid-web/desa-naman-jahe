@@ -19,6 +19,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 10,
     textAlign: 'justify',
+    lineHeight: 1.3
+
   },
   row: {
     display: 'flex',
@@ -26,6 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 5,
     fontSize: 12,
+    lineHeight: 1.3
   },
   label: {
     width: '30%',

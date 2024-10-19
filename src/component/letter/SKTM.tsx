@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         marginBottom: 10,
         textAlign: 'justify',
+        lineHeight: 1.3,
     },
     row: {
         display: 'flex',
@@ -97,7 +98,7 @@ const SKTM = ({ nomorSurat, name, dob, address, nik, gender, status, occupation,
                 </View>
             </View>
             <Text style={styles.content}>
-                Berdasarkan surat pengantar dari RT 008 RW 002 No. 032/RT.008/RW.002/IX/2019 Tanggal {skDate}, bahwa benar yang bersangkutan keluarga tidak mampu.
+                Berdasarkan surat pengantar dari Kepala Desa Naman Jahe dengan No. {nomorSurat}/SKTM/IX/{currYear} Tanggal {skDate}, bahwa benar yang bersangkutan keluarga tidak mampu.
             </Text>
             <Text style={styles.content}>
                 Surat keterangan ini untuk persyaratan Bantuan Pendidikan Sekolah atas nama:
