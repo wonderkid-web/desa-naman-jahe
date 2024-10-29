@@ -18,6 +18,8 @@ function Page() {
   const onSubmit: SubmitHandler<FormLogin> = async (form) => {
     setLoad(true);
 
+    const toastId = toast.loading('Proses Masuk...')
+
     const signin = await signIn("credentials", {
       ...form,
       redirect: false,
@@ -26,12 +28,14 @@ function Page() {
     setLoad(false);
 
     if (signin?.ok) {
+      toast.dismiss(toastId)
       if (form.nik.includes("000000")) {
         router.push("/admin");
       } else {
         router.push("/");
       }
     } else {
+      toast.dismiss(toastId)
       toast.warning("NIK atau Password kamu salah nih");
     }
   };

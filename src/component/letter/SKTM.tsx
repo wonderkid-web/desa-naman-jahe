@@ -130,7 +130,7 @@ const SKTM = ({ nomorSurat, name, dob, address, nik, gender, status, occupation,
                 <Text>Salapian, {date}</Text>
                 <Text style={styles.signatureName}>{issuer}</Text>
                 <Text>Kepala Desa Naman Jahe</Text>
-                <Text>Nobdi Nanda Ginting Suka</Text>
+                {/* <Text>Nobdi Nanda Ginting Suka</Text> */}
             </View>
         </Page>
     </Document>
